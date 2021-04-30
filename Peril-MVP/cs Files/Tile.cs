@@ -30,7 +30,7 @@ namespace Peril_MVP
 
         public static readonly Vector2 Size = new Vector2(Width, Height);
 
-        /// Constructs a new tile.
+        // Constructs a new tile.
         public Tile(Texture2D texture, TileCollision collision)
         {
             Texture = texture;
