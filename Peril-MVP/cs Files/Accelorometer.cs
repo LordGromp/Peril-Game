@@ -50,8 +50,7 @@ namespace Peril_MVP
         public bool IsActive { get; private set; }
 
         // Initializes a new AccelerometerState.
-        public AccelerometerState(Vector3 acceleration, bool isActive)
-            : this()
+        public AccelerometerState(Vector3 acceleration, bool isActive) : this()
         {
             Acceleration = acceleration;
             IsActive = isActive;

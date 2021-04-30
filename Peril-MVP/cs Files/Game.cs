@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Peril_MVP
 {
-    public class Game1 : Game
+    public class Game : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        public Game1()
+        public Game()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

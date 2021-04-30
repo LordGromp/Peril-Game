@@ -100,7 +100,9 @@ namespace Peril_MVP
                 {
                     lines.Add(line);
                     if (line.Length != width)
+                    {
                         throw new Exception(String.Format("The length of line {0} is different from all preceeding lines.", lines.Count));
+                    }
                     line = reader.ReadLine();
                 }
             }
@@ -193,7 +195,9 @@ namespace Peril_MVP
         private Tile LoadStartTile(int x, int y)
         {
             if (Player != null)
+            {
                 throw new NotSupportedException("A level may only have one starting point.");
+            }
 
             start = RectangleExtensions.GetBottomCenter(GetBounds(x, y));
             player = new Player(this, start);
@@ -203,7 +207,9 @@ namespace Peril_MVP
         private Tile LoadExitTile(int x, int y)
         {
             if (exit != InvalidPosition)
+            {
                 throw new NotSupportedException("A level may only have one exit.");
+            }
 
             exit = GetBounds(x, y).Center;
 
@@ -375,7 +381,7 @@ namespace Peril_MVP
         private void OnExitReached()
         {
             Player.OnReachedExit();
-            exitReachedSound.Play();
+            //exitReachedSound.Play();
             reachedExit = true;
         }
 
@@ -392,22 +398,29 @@ namespace Peril_MVP
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             for (int i = 0; i <= EntityLayer; ++i)
+            {
                 spriteBatch.Draw(layers[i], Vector2.Zero, Color.White);
+            }
 
             DrawTiles(spriteBatch);
 
             foreach (Artefact artefact in artefacts)
+            {
                 artefact.Draw(gameTime, spriteBatch);
+            }
 
             Player.Draw(gameTime, spriteBatch);
 
             foreach (Enemy enemy in enemies)
+            {
                 enemy.Draw(gameTime, spriteBatch);
+            }
 
             for (int i = EntityLayer + 1; i < layers.Length; ++i)
+            {
                 spriteBatch.Draw(layers[i], Vector2.Zero, Color.White);
+            }
         }
-
 
         // Draws each tile in the level.
         private void DrawTiles(SpriteBatch spriteBatch)
