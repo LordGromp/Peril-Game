@@ -23,7 +23,7 @@ namespace Peril_MVP
         private Vector2 default_Position;
 
         #endregion
-
+          
         public Level Level
         {
             get { return level; }
@@ -48,6 +48,7 @@ namespace Peril_MVP
         }
 
         #region Functions
+
         void LoadContent()
         {
 
@@ -67,12 +68,17 @@ namespace Peril_MVP
         {
             spriteBatch.Draw(artefactTexture, artefact_Position, null, artefact_colour, 0.0f, originPoint, 1.0f, SpriteEffects.None, 0.0f);
         }
+
+        #endregion
+
+
         #endregion
 
         public void OnCollected(Player obtained)
         {
             collectionSFX.Play();
         }
+
 
         public Circle BoundingCircle
         {
@@ -81,6 +87,7 @@ namespace Peril_MVP
                 return new Circle(artefact_Position, Tile.Width / 3.0f);
             }
         }
+
 
     }
 }

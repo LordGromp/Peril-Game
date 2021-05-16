@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 
 namespace Peril_MVP
@@ -18,6 +19,14 @@ namespace Peril_MVP
         private Animation dieAnimation;
         private SpriteEffects flip = SpriteEffects.None;
         private AnimationPlayer sprite;
+
+
+        //Audio
+
+        private Song running;
+        private SoundEffect leaping;
+        private SoundEffect landing;
+       
 
         public Level Level
         {
@@ -121,6 +130,13 @@ namespace Peril_MVP
             celebrateAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Celebrate"), 0.1f, false);
             dieAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Die"), 0.1f, false);
 
+
+            // Load All Audio
+
+            running = Level.Content.Load<Song>("Audio/SFX/Walking");
+            leaping = Level.Content.Load<SoundEffect>("Audio/SFX/Jumping");
+            landing = Level.Content.Load<SoundEffect>("Audio/SFX/Landing");
+
             // Calculate bounds within texture size.            
             int width = (int)(idleAnimation.FrameWidth * 0.4);
             int left = (idleAnimation.FrameWidth - width) / 2;
@@ -211,20 +227,37 @@ namespace Peril_MVP
                 keyboardState.IsKeyDown(Keys.A))
             {
                 movement = -1.0f;
+
+                MediaPlayer.Play(running);
+                MediaPlayer.IsRepeating = true;
+                
             }
             else if (gamePadState.IsButtonDown(Buttons.DPadRight) ||
                      keyboardState.IsKeyDown(Keys.Right) ||
                      keyboardState.IsKeyDown(Keys.D))
             {
                 movement = 1.0f;
+                MediaPlayer.Play(running);
+                MediaPlayer.IsRepeating = true;
+            }
+
+
+            else
+            {
+                MediaPlayer.IsRepeating = false;
             }
 
             // Check if the player wants to jump.
             isJumping =
+
+                
+
                 gamePadState.IsButtonDown(JumpButton) ||
                 keyboardState.IsKeyDown(Keys.Space) ||
                 keyboardState.IsKeyDown(Keys.Up) ||
                 keyboardState.IsKeyDown(Keys.W);
+
+         
         }
         #endregion
 
@@ -294,11 +327,15 @@ namespace Peril_MVP
             // If the player wants to jump
             if (isJumping)
             {
+               
+
                 // Begin or continue a jump
                 if ((!wasJumping && IsOnGround) || jumpTime > 0.0f)
                 {
                     //if (jumpTime == 0.0f)
-                        //jumpSound.Play();
+                    //jumpSound.Play();
+
+                    leaping.Play();  //Plays Jumpging Sound
 
                     jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     sprite.PlayAnimation(jumpAnimation);
@@ -313,7 +350,9 @@ namespace Peril_MVP
                 else
                 {
                     // Reached the apex of the jump
+
                     jumpTime = 0.0f;
+                    landing.Play();  //Plays landing Sound when you reach the ground
                 }
             }
             else
