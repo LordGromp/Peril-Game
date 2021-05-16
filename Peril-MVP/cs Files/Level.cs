@@ -380,7 +380,7 @@ namespace Peril_MVP
         // Called when the player reaches the level's exit.
         private void OnExitReached()
         {
-            Player.OnReachedExit();
+            //Player.OnReachedExit();
             //exitReachedSound.Play();
             reachedExit = true;
         }
