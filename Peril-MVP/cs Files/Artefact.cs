@@ -23,9 +23,7 @@ namespace Peril_MVP
         private Vector2 default_Position;
 
         #endregion
-
-
-
+          
         public Level Level
         {
             get { return level; }
@@ -49,7 +47,6 @@ namespace Peril_MVP
             LoadContent();
         }
 
-
         #region Functions
 
         void LoadContent()
@@ -60,16 +57,12 @@ namespace Peril_MVP
             collectionSFX = Level.Content.Load<SoundEffect>("Audio/SFX/Collectable Sound");
         }
 
-
         public void Update(GameTime gameTime)
         {
             double t = gameTime.TotalGameTime.TotalSeconds * hovering_Rate + artefact_Position.X * Sync_of_Hover;
             hover = (float)Math.Sin(t) * hovering_Height * artefactTexture.Height;
 
         }
-
-
-
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -79,13 +72,12 @@ namespace Peril_MVP
         #endregion
 
 
-       
+        #endregion
 
         public void OnCollected(Player obtained)
         {
             collectionSFX.Play();
         }
-
 
 
         public Circle BoundingCircle
@@ -95,8 +87,6 @@ namespace Peril_MVP
                 return new Circle(artefact_Position, Tile.Width / 3.0f);
             }
         }
-
-
 
 
     }
