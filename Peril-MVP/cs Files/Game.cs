@@ -43,22 +43,13 @@ namespace Peril_MVP
             IsMouseVisible = true;
             graphics.IsFullScreen = false;
 
-            //graphics.PreferredBackBufferWidth = 1280;
-            //graphics.PreferredBackBufferHeight = 720;
-            // graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            //graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
 
             Accelerometer.Initialize();
 
         }
-
-        #region Initialize
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
-            base.Initialize();
-        }
-        #endregion
 
         #region Load Content
         protected override void LoadContent()
@@ -145,9 +136,13 @@ namespace Peril_MVP
                 else if (level.TimeRemaining == TimeSpan.Zero)
                 {
                     if (level.ReachedExit)
+                    {
                         LoadNextLevel();
+                    }
                     else
+                    {
                         ReloadCurrentLevel();
+                    }
                 }
             }
 

@@ -74,8 +74,8 @@ namespace Peril_MVP
 
             LoadTiles(fileStream);
 
-            // Load background layer textures. For now, all levels must
-            // use the same backgrounds and only use the left-most part of them.
+            //// Load background layer textures. For now, all levels must
+            //// use the same backgrounds and only use the left-most part of them.
             layers = new Texture2D[3];
             for (int i = 0; i < layers.Length; ++i)
             {
@@ -85,7 +85,7 @@ namespace Peril_MVP
             }
 
             // Load sounds.
-            
+
         }
         private void LoadTiles(Stream fileStream)
         {
@@ -150,25 +150,21 @@ namespace Peril_MVP
 
                 // Floating platform
                 case '-':
-                    return LoadTile("Platform", TileCollision.Platform);
+                    return LoadTile("Floating Platform", TileCollision.Platform);
 
                 // Various enemies
                 case 'A':
                     return LoadEnemyTile(x, y, "EnemyA");
                 case 'B':
                     return LoadEnemyTile(x, y, "EnemyB");
-                case 'C':
-                    return LoadEnemyTile(x, y, "EnemyC");
-                case 'D':
-                    return LoadEnemyTile(x, y, "EnemyD");
 
                 // Platform block
                 case '~':
-                    return LoadVarietyTile("BlockB", 2, TileCollision.Platform);
+                    return LoadVarietyTile("Platform Block", TileCollision.Platform);
 
                 // Passable block
                 case ':':
-                    return LoadVarietyTile("BlockB", 2, TileCollision.Passable);
+                    return LoadVarietyTile("Passable Block", TileCollision.Passable);
 
                 // Player 1 start point
                 case '1':
@@ -176,7 +172,7 @@ namespace Peril_MVP
 
                 // Impassable block
                 case '#':
-                    return LoadVarietyTile("BlockA", 7, TileCollision.Impassable);
+                    return LoadVarietyTile("Impassable Block", TileCollision.Impassable);
 
                 // Unknown tile type character
                 default:
@@ -187,10 +183,10 @@ namespace Peril_MVP
         {
             return new Tile(Content.Load<Texture2D>("Tiles/" + name), collision);
         }
-        private Tile LoadVarietyTile(string baseName, int variationCount, TileCollision collision)
+        private Tile LoadVarietyTile(string baseName,TileCollision collision)
         {
-            int index = random.Next(variationCount);
-            return LoadTile(baseName + index, collision);
+            //int index = random.Next(variationCount);
+            return LoadTile(baseName, collision);
         }
         private Tile LoadStartTile(int x, int y)
         {
@@ -292,11 +288,11 @@ namespace Peril_MVP
             }
             else if (ReachedExit)
             {
-                // Animate the time being converted into points.
-                int seconds = (int)Math.Round(gameTime.ElapsedGameTime.TotalSeconds * 100.0f);
-                seconds = Math.Min(seconds, (int)Math.Ceiling(TimeRemaining.TotalSeconds));
-                timeRemaining -= TimeSpan.FromSeconds(seconds);
-                score += seconds * PointsPerSecond;
+                //// Animate the time being converted into points.
+                //int seconds = (int)Math.Round(gameTime.ElapsedGameTime.TotalSeconds * 100.0f);
+                //seconds = Math.Min(seconds, (int)Math.Ceiling(TimeRemaining.TotalSeconds));
+                //timeRemaining -= TimeSpan.FromSeconds(seconds);
+                //score += seconds * PointsPerSecond;
             }
             else
             {
@@ -306,13 +302,15 @@ namespace Peril_MVP
 
                 // Falling off the bottom of the level kills the player.
                 if (Player.BoundingRectangle.Top >= Height * Tile.Height)
+                {
                     OnPlayerKilled(null);
+                }
 
                 UpdateEnemies(gameTime);
 
                 // The player has reached the exit if they are standing on the ground and
                 // his bounding rectangle contains the center of the exit tile. 
-                // They can only exit when they have collected all of the artefactss.
+                // They can only exit when they have collected all of the artefacts.
                 if (Player.IsAlive &&
                     Player.IsOnGround &&
                     Player.BoundingRectangle.Contains(exit))
@@ -380,7 +378,7 @@ namespace Peril_MVP
         // Called when the player reaches the level's exit.
         private void OnExitReached()
         {
-            //Player.OnReachedExit();
+            Player.OnReachedExit();
             //exitReachedSound.Play();
             reachedExit = true;
         }

@@ -25,7 +25,7 @@ namespace Peril_MVP
         public Texture2D Texture;
         public TileCollision Collision;
 
-        public const int Width = 40;
+        public const int Width = 32;
         public const int Height = 32;
 
         public static readonly Vector2 Size = new Vector2(Width, Height);

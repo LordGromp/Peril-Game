@@ -38,7 +38,9 @@ namespace Peril_MVP
         {
             // If this animation is already running, do not restart it.
             if (Animation == animation)
+            {
                 return;
+            }
     
             // Start the new animation.
             this.animation = animation;
@@ -52,7 +54,9 @@ namespace Peril_MVP
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)
         {
             if (Animation == null)
+            {
                 throw new NotSupportedException("No animation is currently playing.");
+            }
     
             // Process passing time.
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;

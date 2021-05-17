@@ -14,8 +14,8 @@ namespace Peril_MVP
         private Animation idleAnimation;
         private Animation runAnimation;
         private Animation jumpAnimation;
-        private Animation celebrateAnimation;
-        private Animation dieAnimation;
+        //private Animation celebrateAnimation;
+        //private Animation dieAnimation;
         private SpriteEffects flip = SpriteEffects.None;
         private AnimationPlayer sprite;
 
@@ -115,9 +115,9 @@ namespace Peril_MVP
         public void LoadContent()
         {
             // Load animated textures.
-            idleAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Idle"), 0.1f, true);
-            runAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Run"), 0.1f, true);
-            jumpAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Jump"), 0.1f, false);
+            idleAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/maincharacter_1-export"), 0.1f, true);
+            runAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/maincharacter_1-export"), 0.1f, true);
+            jumpAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/maincharacter_1-export"), 0.1f, false);
             //dieAnimation = new Animation(Level.Content.Load<Texture2D>("Sprites/Player/Die"), 0.1f, false);
 
             // Calculate bounds within texture size.            
@@ -403,16 +403,16 @@ namespace Peril_MVP
         {
             isAlive = false;
 
-            sprite.PlayAnimation(dieAnimation);
+            //sprite.PlayAnimation(dieAnimation);
         }
         #endregion
 
         #region Exit Reached
         // Called when this player reaches the level's exit.
-        //public void OnReachedExit()
-        //{
-        //    sprite.PlayAnimation(celebrateAnimation);
-        //}
+        public void OnReachedExit()
+        {
+            //sprite.PlayAnimation(celebrateAnimation);
+        }
         #endregion
 
         #region Player Draw
@@ -422,11 +422,11 @@ namespace Peril_MVP
             // Flip the sprite to face the way we are moving.
             if (Velocity.X > 0)
             {
-                flip = SpriteEffects.FlipHorizontally;
+                flip = SpriteEffects.None;
             }
             else if (Velocity.X < 0)
             {
-                flip = SpriteEffects.None;
+                flip = SpriteEffects.FlipHorizontally;
             }
 
             // Draw that sprite.
