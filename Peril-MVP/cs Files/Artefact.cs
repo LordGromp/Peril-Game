@@ -19,7 +19,7 @@ namespace Peril_MVP
         public int PointValue = 24;
         private Texture2D artefactTexture;
         private Vector2 originPoint;
-        private SoundEffect collectionSFX;
+        //private SoundEffect collectionSFX;
         private Vector2 default_Position;
 
         #endregion
@@ -52,9 +52,9 @@ namespace Peril_MVP
         void LoadContent()
         {
 
-            artefactTexture = Level.Content.Load<Texture2D>("");
+            artefactTexture = Level.Content.Load<Texture2D>("Sprites/Artifact Piece 2");
             originPoint = new Vector2(artefactTexture.Width / 2.0f, artefactTexture.Height / 2.0f);
-            collectionSFX = Level.Content.Load<SoundEffect>("Audio/SFX/Collectable Sound");
+            //collectionSFX = Level.Content.Load<SoundEffect>("Audio/SFX/Collectable Sound");
         }
 
         public void Update(GameTime gameTime)
@@ -71,12 +71,9 @@ namespace Peril_MVP
 
         #endregion
 
-
-        #endregion
-
         public void OnCollected(Player obtained)
         {
-            collectionSFX.Play();
+            //collectionSFX.Play();
         }
 
 
