@@ -71,9 +71,6 @@ namespace Peril_MVP
 
         #endregion
 
-
-        #endregion
-
         public void OnCollected(Player obtained)
         {
             //collectionSFX.Play();

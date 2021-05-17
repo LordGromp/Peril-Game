@@ -132,9 +132,9 @@ namespace Peril_MVP
 
             // Load All Audio
 
-            running = Level.Content.Load<Song>("Audio/SFX/Walking");
-            leaping = Level.Content.Load<SoundEffect>("Audio/SFX/Jumping");
-            landing = Level.Content.Load<SoundEffect>("Audio/SFX/Landing");
+            //running = Level.Content.Load<Song>("Audio/SFX/Walking");
+            //leaping = Level.Content.Load<SoundEffect>("Audio/SFX/Jumping");
+            //landing = Level.Content.Load<SoundEffect>("Audio/SFX/Landing");
 
             // Calculate bounds within texture size.            
             int width = (int)(idleAnimation.FrameWidth * 0.4);
@@ -236,27 +236,17 @@ namespace Peril_MVP
                      keyboardState.IsKeyDown(Keys.D))
             {
                 movement = 1.0f;
-                MediaPlayer.Play(running);
-                MediaPlayer.IsRepeating = true;
+                //MediaPlayer.Play(running);
+                //MediaPlayer.IsRepeating = true;
             }
 
-
-            else
-            {
-                MediaPlayer.IsRepeating = false;
-            }
 
             // Check if the player wants to jump.
             isJumping =
-
-                
-
                 gamePadState.IsButtonDown(JumpButton) ||
                 keyboardState.IsKeyDown(Keys.Space) ||
                 keyboardState.IsKeyDown(Keys.Up) ||
                 keyboardState.IsKeyDown(Keys.W);
-
-         
         }
         #endregion
 
@@ -334,7 +324,7 @@ namespace Peril_MVP
                     //if (jumpTime == 0.0f)
                     //jumpSound.Play();
 
-                    leaping.Play();  //Plays Jumpging Sound
+                    //leaping.Play();  //Plays Jumpging Sound
 
                     jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     sprite.PlayAnimation(jumpAnimation);
@@ -351,7 +341,7 @@ namespace Peril_MVP
                     // Reached the apex of the jump
 
                     jumpTime = 0.0f;
-                    landing.Play();  //Plays landing Sound when you reach the ground
+                    //landing.Play();  //Plays landing Sound when you reach the ground
                 }
             }
             else
