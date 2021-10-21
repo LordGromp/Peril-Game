@@ -133,7 +133,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Artifact Piece 2.png
 
-#begin Sprites/EnemyA/EnemyA.png
+#begin Sprites/EnemyA/Idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,7 +143,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/EnemyA/EnemyA.png
+/build:Sprites/EnemyA/Idle.png
+
+#begin Sprites/EnemyA/Run.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/EnemyA/Run.png
 
 #begin Sprites/Player/maincharacter_1-export.png
 /importer:TextureImporter
