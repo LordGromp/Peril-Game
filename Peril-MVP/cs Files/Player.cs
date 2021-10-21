@@ -23,9 +23,9 @@ namespace Peril_MVP
 
         //Audio
 
-        private Song running;
-        private SoundEffect leaping;
-        private SoundEffect landing;
+        //private Song running;
+        //private SoundEffect leaping;
+        //private SoundEffect landing;
        
 
         public Level Level
@@ -227,8 +227,8 @@ namespace Peril_MVP
             {
                 movement = -1.0f;
 
-                MediaPlayer.Play(running);
-                MediaPlayer.IsRepeating = true;
+                //MediaPlayer.Play(running);
+                //MediaPlayer.IsRepeating = true;
                 
             }
             else if (gamePadState.IsButtonDown(Buttons.DPadRight) ||

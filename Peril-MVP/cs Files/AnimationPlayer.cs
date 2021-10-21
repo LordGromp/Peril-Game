@@ -67,7 +67,7 @@ namespace Peril_MVP
                 // Advance the frame index; looping or clamping as appropriate.
                 if (Animation.IsLooping)
                 {
-                    frameIndex = (frameIndex + 1) % Animation.FrameCount;
+                    //frameIndex = (frameIndex + 1) % Animation.FrameCount;
                 }
                 else
                 {

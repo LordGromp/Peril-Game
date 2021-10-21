@@ -43,8 +43,8 @@ namespace Peril_MVP
             IsMouseVisible = true;
             graphics.IsFullScreen = false;
 
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
+            //graphics.PreferredBackBufferWidth = 1280;
+            //graphics.PreferredBackBufferHeight = 720;
             //graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
 
             Accelerometer.Initialize();
@@ -133,7 +133,7 @@ namespace Peril_MVP
                 {
                     level.StartNewLife();
                 }
-                else if (level.TimeRemaining == TimeSpan.Zero)
+                else if (level.TimeRemaining >= TimeSpan.Zero)
                 {
                     if (level.ReachedExit)
                     {
